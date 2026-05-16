@@ -1,0 +1,19 @@
+{
+  "name": "viberoom",
+  "version": "1.0.0",
+  "description": "A beginner-friendly real-time chat application for university projects.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js",
+    "report:docx": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/build-report-docx.ps1"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "author": "",
+  "license": "ISC"
+}
