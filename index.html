@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- GitHub Pages cannot run Node; only use this if you host ONLY static files here and run the API elsewhere (same-origin not required). No trailing slash. -->
+    <!-- <meta name="viberoom-api-base" content="https://your-node-server.example.com"> -->
+    <title>viberoom | chill & chat</title>
+    <link rel="stylesheet" href="style.css">
+   
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="bg-3d-scene" aria-hidden="true">
+        <span class="orb orb-1"></span>
+        <span class="orb orb-2"></span>
+        <span class="orb orb-3"></span>
+        <span class="ring ring-1"></span>
+        <span class="ring ring-2"></span>
+    </div>
+    <div class="app-container">
+        <!-- Join Screen -->
+        <div id="join-screen" class="screen active">
+            <div class="card">
+                <div class="card-glow" aria-hidden="true"></div>
+                <div class="brand-badge">viberoom</div>
+                <h1>Welcome Back</h1>
+                <p>Join the live collaboration lounge</p>
+                <div class="input-group">
+                    <input type="text" id="username-input" placeholder="Enter your display name" autocomplete="off">
+                    <select id="room-select">
+                        <option value="General">General</option>
+                        <option value="Project">Project</option>
+                        <option value="Doubts">Doubts</option>
+                        <option value="Fun">Fun</option>
+                    </select>
+                    <button id="join-btn">Enter Workspace</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Screen -->
+        <div id="chat-screen" class="screen">
+            <div class="sidebar">
+                <div class="sidebar-header">
+                    <h3>Online Users</h3>
+                    <span class="sidebar-subtitle">Live participants</span>
+                </div>
+                <ul id="user-list">
+                    <!-- Users will be listed here -->
+                </ul>
+            </div>
+            
+            <div class="main-chat">
+                <div class="chat-header">
+                    <div class="chat-title-wrap">
+                        <h2 id="room-name">Global Lounge</h2>
+                        <span class="chat-subtitle">Real-time project discussion room</span>
+                    </div>
+                    <div class="header-actions">
+                        <button id="refresh-stats-btn" type="button">Refresh Stats</button>
+                        <button id="clear-history-btn" type="button">Clear History</button>
+                        <button id="leave-btn" type="button">Leave</button>
+                    </div>
+                </div>
+                <div class="stats-bar">
+                    <span id="health-status">Server: Checking...</span>
+                    <span id="stats-text">Stats: --</span>
+                </div>
+                <div class="search-bar">
+                    <input type="text" id="search-input" placeholder="Search messages..." autocomplete="off">
+                </div>
+                
+                <div id="message-container" class="messages">
+                    <!-- Messages will appear here -->
+                </div>
+                <div id="typing-indicator" class="typing-indicator"></div>
+                
+                <form id="chat-form" class="chat-input-area">
+                    <input type="text" id="message-input" placeholder="Type a message..." autocomplete="off">
+                    <button type="submit" id="send-btn">
+                        <svg viewBox="0 0 24 24" width="24" height="24">
+                            <path fill="currentColor" d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="chat.js"></script>
+ <!-- About Me Button -->
+
+<div style="text-align:center; margin:40px 0;">
+
+  <button id="aboutBtn" 
+
+          style="background-color:rgba(170,212,240,1); color:white; padding:12px 24px; 
+
+                 border:none; border-radius:6px; font-size:18px; cursor:pointer;">
+
+    About Me
+
+  </button>
+
+</div>
+
+
+
+<!-- Popup Modal -->
+
+<div id="aboutModal" 
+
+     style="display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; 
+
+            background-color:rgba(170,212,219,1);">
+
+  <div style="background:white; margin:10% auto; padding:20px; border-radius:8px; 
+
+              width:80%; max-width:500px; box-shadow:0 4px 10px rgba(0,0,0,0.3);">
+
+    <span id="closeModal" 
+
+          style="float:right; font-size:24px; font-weight:bold; cursor:pointer;">&times;</span>
+
+    <h2 style="text-align:center; color:#333;">About Me</h2>
+
+    <p style="font-size:18px; color:#555;"><strong>Name:</strong> Tanisha</p>
+
+    <p style="font-size:18px; color:#555;"><strong>Roll No:</strong> 2511981250</p>
+
+    <p style="font-size:18px; color:#555;"><strong>Department:</strong> B.E. CSE</p>
+
+    <p style="font-size:18px; color:#555;"><strong>College:</strong> Chitkara University</p>
+
+    <p style="font-size:16px; color:#555; line-height:1.6;">
+
+      Welcome to my Viberoom project! I am passionate about programming, web development, 
+
+      and exploring advanced topics in computer science. This platform reflects my interest 
+
+      in real-time communication and collaborative systems.
+
+    </p>
+
+  </div>
+
+</div>
+
+
+
+<!-- JavaScript for Modal -->
+
+<script>
+
+  const aboutBtn = document.getElementById("aboutBtn");
+
+  const aboutModal = document.getElementById("aboutModal");
+
+  const closeModal = document.getElementById("closeModal");
+
+
+
+  aboutBtn.onclick = function() {
+
+    aboutModal.style.display = "block";
+
+  }
+
+  closeModal.onclick = function() {
+
+    aboutModal.style.display = "none";
+
+  }
+
+  window.onclick = function(event) {
+
+    if (event.target == aboutModal) {
+
+      aboutModal.style.display = "none";
+
+    }
+
+  }
+
+</script>
+
+
+
+
+</body>
+</html>
